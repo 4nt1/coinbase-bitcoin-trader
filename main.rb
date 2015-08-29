@@ -63,20 +63,7 @@ loop do
     end
   rescue => e
     @error_count += 1
-
-    message = {
-     subject:  "Oups, something went wrong",
-     from_name:  "Coinbase Trader",
-     text: "#{e.message}",
-     to: [
-       { email:  "mail@antoinemary.me",
-         name:  "antoine" }
-     ],
-     html: "<html><p>#{e.message}</p><p>#{@error_count} errors</p></html>",
-     from_email: "coinbase@antoinemary.me"
-    }
-    sending = $mandrill.messages.send message
-
+    Mail.send("#{e.message} | #{@error_count} errors")
     raise if @error_count > 9
 
   end
