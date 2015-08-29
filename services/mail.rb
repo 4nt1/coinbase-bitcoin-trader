@@ -3,7 +3,7 @@ class Mail
   class << self
 
     def send(message)
-      masg = {
+      msg = {
        subject:  "Message from coinbase trader",
        from_name:  "Coinbase Trader",
        text: "#{message}",
