@@ -45,7 +45,7 @@ loop do
             growth = 1 + nb/100.to_f
             euro_price = transaction.rate * growth
             o = Api.sell(bitcoins/10, euro_price)
-            Mail.send("Place order for selling #{bitcoins/10} BTC at #{euro_price} EUR"
+            Mail.send("Place order for selling #{bitcoins/10} BTC at #{euro_price} EUR")
             Transaction.make_from_order(o)
           end
         when 'sell'
