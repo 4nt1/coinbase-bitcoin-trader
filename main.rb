@@ -1,4 +1,12 @@
+require_relative './config/app_config'
+
+Initializer.call
 @error_count = 0
+
+bitcoins    = BigDecimal(Api.btc_account.balance)
+euros       = BigDecimal(Api.eur_account.balance)
+p "Balance : #{bitcoins} BTC"
+p "Balance : #{euros} EUR"
 @euro_price = 200.0
 
 if bitcoins > 0
