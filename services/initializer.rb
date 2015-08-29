@@ -7,6 +7,7 @@ class Initializer
       client
       api
       database
+      mandrill
     end
 
     private
@@ -24,6 +25,10 @@ class Initializer
         if !ActiveRecord::Base.connection.table_exists?(:transactions)
           CreateTransactionsTable.migrate(:up)
         end
+      end
+
+      def mandrill
+        $mandrill = Mandrill::API.new($settings.mandrill.api_key)
       end
 
       def api
