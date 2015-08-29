@@ -7,5 +7,7 @@ require 'sqlite3'
 require 'mandrill'
 
 [:services, :migrations].each do |folder|
-  Dir["./#{folder}/*.rb"].each { |file| require file }
+  Dir["#{ENV['HOME']}/coinbase-bitcoin-trader/#{folder}/*.rb"].each do |file|
+    require_relative "../#{folder}/#{file}"
+  end
 end
