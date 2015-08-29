@@ -1,9 +1,9 @@
 class CreateTransactionsTable < ActiveRecord::Migration
 
   def up
-    create_table :transactions do |t|
-      t.string  :coinbase_id
-      t.integer :time
+    create_table :transactions, { id: false } do |t|
+      t.string  :id
+      t.string  :time
       t.decimal :price
       t.string  :side
       t.string  :status

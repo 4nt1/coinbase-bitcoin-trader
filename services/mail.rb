@@ -2,9 +2,14 @@ class Mail
 
   class << self
 
-    def send(message)
+    def send(message, order=nil)
+      subject = if order.nil?
+        'Error in app'
+      else
+        "Order #{o.id} validated"
+      end
       msg = {
-       subject:  "Message from coinbase trader",
+       subject:  subject,
        from_name:  "Coinbase Trader",
        text: "#{message}",
        to: [

@@ -14,7 +14,7 @@ class Transaction < ActiveRecord::Base
     def make_from_order(order)
       create( id:     order.id,
               time:   order.created_at,
-              rate:   order.price ,
+              price:  order.price ,
               side:   order.side,
               status: 'pending')
     end
