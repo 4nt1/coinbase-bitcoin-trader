@@ -13,7 +13,7 @@ class Initializer
     private
 
       def settings
-        $settings = HashWithIndifferentAccess.new(YAML.load(File.read('./config/settings.yml')))
+        $settings = HashWithIndifferentAccess.new(YAML.load(File.read("#{ENV['HOME']}/coinbase-bitcoin-trader/config/settings.yml")))
       end
 
       def client
