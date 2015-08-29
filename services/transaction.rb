@@ -12,10 +12,10 @@ class Transaction < ActiveRecord::Base
     end
 
     def make_from_order(order)
-      create( id:     o.id,
-              time:   o.created_at,
-              rate:   o.price ,
-              side:   o.side,
+      create( id:     order.id,
+              time:   order.created_at,
+              rate:   order.price ,
+              side:   order.side,
               status: 'pending')
     end
   end
