@@ -11,15 +11,15 @@ p "Balance : #{euros} EUR"
 
 if bitcoins > 0
   @euro_price = (@euro_price * 1.01).round(3)
-  Mail.send("Place order for selling #{bitcoins} BTC at #{@euro_price} EUR", o)
   order = Api.sell(BigDecimal(bitcoins), @euro_price)
+  Mail.send("Place order for selling #{bitcoins} BTC at #{@euro_price} EUR", order)
   Transaction.make_from_order(order)
 
 elsif euros > 0
   euros = BigDecimal(Api.eur_account.balance).round(3)
   bitcoins = (euros / @euro_price * 0.975).round(8)
-  Mail.send("Place order for buying #{bitcoins} bitcoins at #{@euro_price} EUR", o)
   order = Api.buy(bitcoins, @euro_price)
+  Mail.send("Place order for buying #{bitcoins} bitcoins at #{@euro_price} EUR", order)
   Transaction.make_from_order(order)
 end
 
