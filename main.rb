@@ -2,7 +2,6 @@ require_relative './config/app_config'
 
 Initializer.call
 @error_count = 0
-debugger
 
 bitcoins    = BigDecimal(Api.btc_account.balance)
 euros       = BigDecimal(Api.eur_account.balance)
