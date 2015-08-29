@@ -17,7 +17,7 @@ if bitcoins > 0
 
 elsif euros > 0
   euros = BigDecimal(Api.eur_account.balance).round(3)
-  bitcoins = (euros / @euro_price * 0.9975).round(8)
+  bitcoins = (euros / @euro_price * 0.975).round(8)
   Mail.send("Place order for buying #{bitcoins} bitcoins at #{@euro_price} EUR")
   order = Api.buy(bitcoins, @euro_price)
   Transaction.make_from_order(order)
@@ -52,7 +52,7 @@ loop do
           obtained_euros = bitcoins * transaction.rate
           (1..10).each do |nb|
             euro_price = transaction.rate * drop
-            btc_to_buy  = (obtained_euros / 10 / euro_price * 0.9975).round(8)
+            btc_to_buy  = (obtained_euros / 10 / euro_price * 0.975).round(8)
             o = Api.buy(btc_to_buy, euro_price)
             Mail.send("Place order for buying #{btc_to_buy} bitcoins at #{euro_price} EUR")
             Transaction.make_from_order(o)
