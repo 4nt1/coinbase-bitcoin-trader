@@ -28,7 +28,7 @@ class Initializer
       end
 
       def mandrill
-        $mandrill = Mandrill::API.new($settings.mandrill.api_key)
+        $mandrill = Mandrill::API.new($settings[:mandrill][:api_key])
       end
 
       def api
