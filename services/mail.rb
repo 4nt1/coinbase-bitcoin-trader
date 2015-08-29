@@ -6,7 +6,7 @@ class Mail
       subject = if order.nil?
         'Error in app'
       else
-        "Order #{o.id} validated"
+        "Order #{order.id} validated"
       end
       msg = {
        subject:  subject,
