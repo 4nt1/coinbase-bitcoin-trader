@@ -5,8 +5,6 @@ error_count = 0
 ORDER_COUNT = 16
 dispatch = ORDER_COUNT.times.map { |i| (0.005 + 0.001 * i).round(3) }
 
-debugger
-
 loop do
 
   sleep 10
