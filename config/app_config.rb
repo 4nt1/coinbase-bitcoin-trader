@@ -2,9 +2,8 @@ require 'coinbase/wallet'
 require 'coinbase/exchange'
 require 'byebug'
 require 'recursive-open-struct'
-require 'active_record'
-require 'sqlite3'
 require 'mandrill'
+require 'active_support/all'
 
 $app_path =
   if !ARGV[1].nil? && ARGV[1] == 'local'
@@ -13,7 +12,7 @@ $app_path =
     "#{ENV['HOME']}/coinbase-bitcoin-trader"
   end
 
-[:services, :migrations].each do |folder|
+[:services].each do |folder|
   Dir["#{$app_path}/#{folder}/*.rb"].each do |file|
     require file
   end

@@ -6,7 +6,6 @@ class Initializer
       settings
       client
       api
-      database
       mandrill
     end
 
@@ -18,13 +17,6 @@ class Initializer
 
       def client
         $client = Coinbase::Wallet::Client.new($settings[:coinbase])
-      end
-
-      def database
-        ActiveRecord::Base.establish_connection($settings[:db])
-        if !ActiveRecord::Base.connection.table_exists?(:transactions)
-          CreateTransactionsTable.migrate(:up)
-        end
       end
 
       def mandrill
